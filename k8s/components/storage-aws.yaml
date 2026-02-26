@@ -1,0 +1,29 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: storage
+  labels:
+    component: storage
+spec:
+  type: bindings.aws.s3
+  version: v1
+  metadata:
+    - name: bucket
+      value: "order-receipts"
+    - name: region
+      value: "eu-west-2"
+    - name: endpoint
+      value: "s3.eu-west-2.amazonaws.com"
+    - name: accessKey
+      secretKeyRef:
+        name: s3-creds
+        key: accessKey
+    - name: secretKey
+      secretKeyRef:
+        name: s3-creds
+        key: secretKey
+    - name: decodeBase64
+      value: true
+scopes:
+  - orderservice-dotnet
+  - orderservice-go

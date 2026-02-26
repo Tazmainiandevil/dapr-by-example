@@ -1,0 +1,15 @@
+apiVersion: dapr.io/v1alpha1
+kind: Configuration
+metadata:
+  name: tracing
+spec:
+  metrics:
+    enabled: true
+    recordErrorCodes: true
+  tracing:
+    samplingRate: "1"
+    stdout: true
+    otel:
+      endpointAddress: "jaeger-inmemory-instance-collector.monitoring.svc.cluster.local:4317"
+      isSecure: false
+      protocol: grpc

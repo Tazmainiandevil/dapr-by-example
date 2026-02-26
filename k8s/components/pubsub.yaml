@@ -1,0 +1,27 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub
+  labels:
+    component: pubsub
+spec:
+  type: pubsub.kafka
+  version: v1
+  metadata:
+    - name: brokers
+      value: "my-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092"
+    - name: consumerGroup
+      value: "orderservice"
+    - name: authType
+      value: "none"
+    - name: initialOffset
+      value: "newest"
+    - name: maxMessageBytes
+      value: "1048576"
+    - name: disableTls
+      value: "true"
+scopes:
+  - orderservice-dotnet
+  - inventoryservice-dotnet
+  - orderservice-go
+  - inventoryservice-go

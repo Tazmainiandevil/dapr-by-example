@@ -1,0 +1,27 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: statestore
+  labels:
+    component: statestore
+spec:
+  type: state.postgresql
+  version: v1
+  metadata:
+    - name: connectionString
+      secretKeyRef:
+        name: pg-secret
+        key: conn
+    - name: tableName
+      value: "dapr_state"
+    - name: schema
+      value: "public"
+    - name: cleanupIntervalInSeconds
+      value: "3600"
+    - name: actorStateStore
+      value: "true"
+scopes:
+  - orderservice-dotnet
+  - inventoryservice-dotnet
+  - orderservice-go
+  - inventoryservice-go

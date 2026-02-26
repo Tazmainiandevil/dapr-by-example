@@ -1,0 +1,21 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: storage
+spec:
+  type: bindings.azure.blobstorage
+  version: v1
+  metadata:
+  - name: accountName
+    value: orderreceiptsneu
+  - name: accountKey
+    secretKeyRef:
+        name: azure-creds
+        key: accountKey    
+  - name: containerName
+    value: data
+  - name: decodeBase64
+    value: true
+scopes:
+  - orderservice-dotnet
+  - orderservice-go

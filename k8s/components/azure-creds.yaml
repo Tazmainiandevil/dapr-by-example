@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: azure-creds
+type: Opaque
+stringData:
+  accountKey: "REPLACE_WITH_YOUR_AZURE_ACCOUNT_KEY"
