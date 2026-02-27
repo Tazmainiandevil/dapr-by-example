@@ -180,3 +180,34 @@ dapr run --app-id orderservice --app-port 8080 --resources-path ../../components
 - `POST /orders` - Process incoming order events
 - `GET /dapr/subscribe` - Subscription discovery
 - `GET /healthz` - Health check endpoint
+
+## 🟦 Bonus: .NET Aspire (Optional)
+
+This repository is designed for developers working in any language supported by Dapr. All examples can be run using the Dapr CLI, Docker, or Kubernetes without requiring .NET.
+
+For .NET developers, the repository also includes an optional .NET Aspire 13.1 AppHost that provides a modern, unified local development experience. Aspire orchestrates multiple services, launches Dapr sidecars automatically, mounts Dapr components, and exposes a dashboard for logs, health, and service topology.
+
+### Why Aspire?
+
+Aspire 13.1 integrates cleanly with Dapr 1.16, giving .NET developers:
+- One command to run multiple services
+- Automatic Dapr sidecars
+- Automatic port and environment configuration
+- Automatic mounting of the components/ folder
+- A unified dashboard showing services, logs, and sidecars
+- A clean, production‑like local development loop
+This is entirely optional and does not replace the Dapr CLI workflow used throughout the rest of the repo.
+
+### Running the Aspire Host
+From the repository root:
+
+```shell
+dotnet run --project src/aspirehost
+```
+
+This will:
+- Build the distributed application model
+- Start the .NET services
+- Start Dapr sidecars for each service
+- Mount the components/ folder
+- Launch the Aspire dashboard

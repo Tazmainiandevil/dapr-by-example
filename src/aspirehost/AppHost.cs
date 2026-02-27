@@ -1,6 +1,5 @@
 using CommunityToolkit.Aspire.Hosting.Dapr;
 
-
 var builder = DistributedApplication.CreateBuilder(args);
 
 builder.AddProject<Projects.orderservice_dotnet>("ordersservice")
